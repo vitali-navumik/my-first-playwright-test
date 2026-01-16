@@ -7,6 +7,7 @@ import com.microsoft.playwright.APIRequestContext;
 import com.microsoft.playwright.Playwright;
 import com.microsoft.playwright.junit.UsePlaywright;
 import com.microsoft.playwright.options.RequestOptions;
+import com.serenitydojo.playwright.HeadlessChromeOptions;
 import com.serenitydojo.playwright.toolsshop.domain.User;
 import org.assertj.core.api.SoftAssertions;
 import org.junit.jupiter.api.AfterEach;
@@ -15,7 +16,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.HashMap;
 
-@UsePlaywright
+@UsePlaywright(HeadlessChromeOptions.class)
 public class RegisterUserAPITest {
 
     private APIRequestContext request;
