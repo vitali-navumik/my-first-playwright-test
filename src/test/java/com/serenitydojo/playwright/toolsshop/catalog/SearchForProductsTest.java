@@ -1,5 +1,6 @@
 package com.serenitydojo.playwright.toolsshop.catalog;
 
+import com.microsoft.playwright.assertions.PlaywrightAssertions;
 import com.serenitydojo.playwright.toolsshop.fixtures.PlaywrightTestCase;
 import com.serenitydojo.playwright.toolsshop.catalog.pageobjects.ProductList;
 import com.serenitydojo.playwright.toolsshop.catalog.pageobjects.SearchComponent;

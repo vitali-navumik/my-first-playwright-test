@@ -30,7 +30,12 @@ public class PlaywrightLocatorsTest {
         browser = playwright.chromium().launch(
                 new BrowserType.LaunchOptions()
                         .setHeadless(true)
-                        .setArgs(Arrays.asList("--no-sandbox", "--disable-extensions", "--disable-gpu"))
+                        .setArgs(Arrays.asList(
+                                "--no-sandbox",
+                                "--disable-extensions",
+                                "--disable-gpu",
+                                "--disable-blink-features=AutomationControlled"
+                        ))
         );
         // browserContext = browser.newContext();
         browserContext = browser.newContext(new Browser.NewContextOptions()

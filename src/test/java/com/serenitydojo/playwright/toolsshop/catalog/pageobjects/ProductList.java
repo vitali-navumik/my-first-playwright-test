@@ -16,7 +16,12 @@ public class ProductList {
     }
 
     public List<String> getProductNames() {
-        return page.getByTestId("product-name").allInnerTexts();
+        //return page.getByTestId("product-name").allInnerTexts();
+        Locator products = page.getByTestId("product-name");
+
+        products.first().waitFor();
+
+        return products.allInnerTexts();
     }
 
     public List<ProductSummary> getProductSummaries() {
