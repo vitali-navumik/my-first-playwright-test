@@ -6,7 +6,6 @@ import com.serenitydojo.playwright.toolsshop.catalog.pageobjects.SearchComponent
 import com.serenitydojo.playwright.toolsshop.domain.ProductSummary;
 import io.cucumber.java.Before;
 import io.cucumber.java.DataTableType;
-import io.cucumber.java.PendingException;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
