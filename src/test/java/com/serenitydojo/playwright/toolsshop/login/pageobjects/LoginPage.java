@@ -2,7 +2,6 @@ package com.serenitydojo.playwright.toolsshop.login.pageobjects;
 
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
-import com.microsoft.playwright.options.LoadState;
 import com.serenitydojo.playwright.toolsshop.domain.User;
 import com.serenitydojo.playwright.toolsshop.fixtures.ScreenshotManager;
 
