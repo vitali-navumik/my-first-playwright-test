@@ -61,7 +61,8 @@ public abstract class PlaywrightTestCase {
         if (isCI) {
             options.setViewportSize(1920, 1080);
         } else {
-            options.setViewportSize(null);
+            //   options.setViewportSize(null);
+            options.setViewportSize(1920, 1080);
         }
 
         browserContext = browser.get().newContext(options);

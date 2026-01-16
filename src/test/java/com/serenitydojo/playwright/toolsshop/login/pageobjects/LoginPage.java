@@ -2,6 +2,7 @@ package com.serenitydojo.playwright.toolsshop.login.pageobjects;
 
 import com.microsoft.playwright.Page;
 import com.microsoft.playwright.options.AriaRole;
+import com.microsoft.playwright.options.LoadState;
 import com.serenitydojo.playwright.toolsshop.domain.User;
 import com.serenitydojo.playwright.toolsshop.fixtures.ScreenshotManager;
 
@@ -13,7 +14,9 @@ public class LoginPage {
     }
 
     public void open() {
-        page.navigate("https://practicesoftwaretesting.com/auth/login");
+        //  page.navigate("https://practicesoftwaretesting.com/auth/login"); // because open captcha when run from gitHub
+        page.navigate("https://practicesoftwaretesting.com");
+        page.getByText("Sign in").click();
         ScreenshotManager.takeScreenshot(page, "Login page");
     }
 
