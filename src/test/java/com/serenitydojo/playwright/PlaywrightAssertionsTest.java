@@ -90,8 +90,14 @@ public class PlaywrightAssertionsTest {
 
         @Test
         void shouldSortInReverseOrder(Page page) {
-            page.getByTestId("sort").selectOption("Name (Z - A)");
-            page.waitForLoadState(LoadState.NETWORKIDLE);
+//            page.getByTestId("sort").selectOption("Name (Z - A)");
+//            page.waitForLoadState(LoadState.NETWORKIDLE);
+            page.waitForResponse(
+                    r -> r.url().contains("/products")
+                            && r.url().contains("sort=name,asc")
+                            && r.status() == 200,
+                    () -> page.getByTestId("sort").selectOption("Name (Z - A)")
+            );
 
             List<String> productNames = page.getByTestId("product-name").allTextContents();
 
