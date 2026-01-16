@@ -29,6 +29,7 @@ public class SearchComponent {
         page.waitForResponse("**/products**",
                 () -> page.getByTestId("search-reset").click()
         );
+        page.waitForTimeout(250);
     }
 
     //https://api.practicesoftwaretesting.com/products?page=0&q=saw&between=price,1,100&by_category=01KF1KWYWVEFY2SJX1SMWPX9NS&is_rental=false

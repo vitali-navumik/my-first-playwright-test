@@ -38,7 +38,6 @@ public class PlaywrightLocatorsTest {
                                 "--disable-blink-features=AutomationControlled"
                         ))
         );
-        // browserContext = browser.newContext();
         browserContext = browser.newContext(new Browser.NewContextOptions()
                 .setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36")
                 .setViewportSize(1920, 1080)
@@ -199,8 +198,6 @@ public class PlaywrightLocatorsTest {
 
         @BeforeEach
         void openContactPage() {
-//            page.navigate("https://practicesoftwaretesting.com/contact");
-//            page.locator("#first_name").waitFor();
             openPage();
             page.getByText("Contact").click();
 
@@ -241,7 +238,6 @@ public class PlaywrightLocatorsTest {
 
         @BeforeEach
         void openContactPage() {
-           // page.navigate("https://practicesoftwaretesting.com/contact");
             openPage();
             page.getByText("Contact").click();
             playwright.selectors().setTestIdAttribute("data-test");

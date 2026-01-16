@@ -19,9 +19,7 @@ import org.junit.jupiter.api.Test;
 public class SearchForProductsTest extends PlaywrightTestCase {
     SearchComponent searchComponent;
     ProductList productList;
-    ProductDetails productDetails;
     NavBar navBar;
-    CheckoutCart checkoutCart;
 
     @BeforeEach
     void openHomePage() {
