@@ -27,6 +27,7 @@ public abstract class PlaywrightTestCase {
                             .setHeadless(true)
                             .setArgs(Arrays.asList(
                                     "--no-sandbox",
+                                    "--disable-blink-features=AutomationControlled",
                                     "--disable-extensions",
                                     "--disable-gpu",
                                     "--start-maximized"
@@ -40,19 +41,34 @@ public abstract class PlaywrightTestCase {
 
     @BeforeEach
     void setUpBrowserContext() {
-        // browserContext = browser.get().newContext();
+//        boolean isCI = System.getenv("CI") != null;
+//        if (isCI) {
+//            browserContext = browser.get().newContext(
+//                    new Browser.NewContextOptions().setViewportSize(1920, 1080)
+//            );
+//        } else {
+//            browserContext = browser.get().newContext(
+//                    new Browser.NewContextOptions().setViewportSize(null)
+//            );
+//        }
+//
+//        page = browserContext.newPage();
         boolean isCI = System.getenv("CI") != null;
+
+        Browser.NewContextOptions options = new Browser.NewContextOptions()
+                // ДОБАВИТЬ ЭТО: реальный User-Agent, чтобы не выглядеть как Headless-бот
+                .setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36");
+
         if (isCI) {
-            browserContext = browser.get().newContext(
-                    new Browser.NewContextOptions().setViewportSize(1920, 1080)
-            );
+            options.setViewportSize(1920, 1080);
         } else {
-            browserContext = browser.get().newContext(
-                    new Browser.NewContextOptions().setViewportSize(null)
-            );
+            options.setViewportSize(null);
         }
 
+        browserContext = browser.get().newContext(options);
         page = browserContext.newPage();
+
+        page.addInitScript("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})");
     }
 
     @AfterEach
