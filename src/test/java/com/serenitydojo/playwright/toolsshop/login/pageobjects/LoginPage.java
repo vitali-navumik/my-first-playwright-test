@@ -13,16 +13,13 @@ public class LoginPage {
     }
 
     public void open() {
-        //  page.navigate("https://practicesoftwaretesting.com/auth/login"); // because open captcha when run from gitHub
-        page.navigate("https://practicesoftwaretesting.com");
-        page.getByText("Sign in").click();
+        page.navigate("https://practicesoftwaretesting.com/auth/login");
         ScreenshotManager.takeScreenshot(page, "Login page");
     }
 
     public void loginAs(User user) {
         page.getByPlaceholder("Your email").fill(user.email());
         page.getByPlaceholder("Your password").fill(user.password());
-        // page.getByTestId("login-submit").click();
         page.getByRole(AriaRole.BUTTON, new Page.GetByRoleOptions().setName("Login")).click();
     }
 

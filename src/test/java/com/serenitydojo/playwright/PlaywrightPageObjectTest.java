@@ -169,7 +169,6 @@ public class PlaywrightPageObjectTest {
 
         @Test
         void whenCheckingOutMultipleItems() {
-            navBar.openHomePage();
             productList.viewProductDetails("Bolt Cutters");
             productDetails.increaseQuantityBy(2);
             productDetails.addToCart();

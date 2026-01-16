@@ -93,7 +93,7 @@ public class PlaywrightAssertionsTest {
 //            page.waitForLoadState(LoadState.NETWORKIDLE);
             page.waitForResponse(
                     r -> r.url().contains("/products")
-                            && r.url().contains("sort=name,asc")
+                            && r.url().contains("sort=name,desc")
                             && r.status() == 200,
                     () -> page.getByTestId("sort").selectOption("Name (Z - A)")
             );
