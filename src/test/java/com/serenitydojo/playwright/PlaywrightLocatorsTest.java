@@ -199,8 +199,11 @@ public class PlaywrightLocatorsTest {
 
         @BeforeEach
         void openContactPage() {
-            page.navigate("https://practicesoftwaretesting.com/contact");
-            page.locator("#first_name").waitFor();
+//            page.navigate("https://practicesoftwaretesting.com/contact");
+//            page.locator("#first_name").waitFor();
+            openPage();
+            page.getByText("Contact").click();
+
         }
 
         @DisplayName("By id")
@@ -238,10 +241,10 @@ public class PlaywrightLocatorsTest {
 
         @BeforeEach
         void openContactPage() {
-            page.navigate("https://practicesoftwaretesting.com/contact");
+           // page.navigate("https://practicesoftwaretesting.com/contact");
+            openPage();
+            page.getByText("Contact").click();
             playwright.selectors().setTestIdAttribute("data-test");
-            page.locator(".navbar").waitFor();
-            page.locator("#first_name").waitFor();
         }
 
         // :has-text matches any element containing specified text somewhere inside.
