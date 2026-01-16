@@ -14,7 +14,6 @@ public class LoginPage {
 
     public void open() {
         page.navigate("https://practicesoftwaretesting.com/auth/login");
-        page.getByTestId("login-form").waitFor();
         ScreenshotManager.takeScreenshot(page, "Login page");
     }
 

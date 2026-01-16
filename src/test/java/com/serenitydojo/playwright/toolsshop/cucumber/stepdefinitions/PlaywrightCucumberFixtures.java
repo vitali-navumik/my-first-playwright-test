@@ -40,15 +40,31 @@ public class PlaywrightCucumberFixtures {
 
     @Before(order = 100)
     public void setUpBrowserContext() {
-        // browserContext.set(browser.get().newContext());
+//        boolean isCI = System.getenv("CI") != null;
+//        if (isCI) {
+//            browserContext.set(browser.get().newContext(
+//                    new Browser.NewContextOptions().setViewportSize(1920, 1080)
+//            ));
+//        } else {
+//            browserContext.set(browser.get().newContext(
+//                    new Browser.NewContextOptions().setViewportSize(null)
+//            ));
+//        }
         boolean isCI = System.getenv("CI") != null;
+
+        String userAgent = "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
+
         if (isCI) {
             browserContext.set(browser.get().newContext(
-                    new Browser.NewContextOptions().setViewportSize(1920, 1080)
+                    new Browser.NewContextOptions()
+                            .setUserAgent(userAgent)
+                            .setViewportSize(1920, 1080)
             ));
         } else {
             browserContext.set(browser.get().newContext(
-                    new Browser.NewContextOptions().setViewportSize(null)
+                    new Browser.NewContextOptions()
+                            .setUserAgent(userAgent)
+                            .setViewportSize(null)
             ));
         }
 

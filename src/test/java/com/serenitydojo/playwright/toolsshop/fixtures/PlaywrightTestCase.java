@@ -56,7 +56,6 @@ public abstract class PlaywrightTestCase {
         boolean isCI = System.getenv("CI") != null;
 
         Browser.NewContextOptions options = new Browser.NewContextOptions()
-                // ДОБАВИТЬ ЭТО: реальный User-Agent, чтобы не выглядеть как Headless-бот
                 .setUserAgent("Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/122.0.0.0 Safari/537.36");
 
         if (isCI) {
@@ -67,8 +66,6 @@ public abstract class PlaywrightTestCase {
 
         browserContext = browser.get().newContext(options);
         page = browserContext.newPage();
-
-        page.addInitScript("Object.defineProperty(navigator, 'webdriver', {get: () => undefined})");
     }
 
     @AfterEach
