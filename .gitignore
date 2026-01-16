@@ -1,0 +1,63 @@
+########################################
+# Maven build artifacts
+########################################
+
+# Maven build output (classes, jars, reports)
+target/
+
+########################################
+# Maven Release / Versions plugins
+########################################
+
+# Files created by maven-release-plugin
+pom.xml.tag
+pom.xml.releaseBackup
+pom.xml.versionsBackup
+pom.xml.next
+release.properties
+
+# File generated when building shaded/fat jar
+dependency-reduced-pom.xml
+
+# Build number file
+buildNumber.properties
+
+########################################
+# Maven Wrapper
+########################################
+
+# Temporary Maven Wrapper files
+.mvn/timing.properties
+
+# Maven Wrapper jar (sometimes committed, but ignored here)
+# https://github.com/takari/maven-wrapper#usage-without-binary-jar
+.mvn/wrapper/maven-wrapper.jar
+
+########################################
+# IDE files
+########################################
+
+# Eclipse project files
+.project
+.classpath
+
+# IntelliJ IDEA project files (local settings)
+.idea
+
+########################################
+# Test reports and runtime artifacts
+########################################
+
+# Allure test results and temporary files
+.allure
+allure-results
+
+# Playwright HTML reports
+playwright-report/
+
+########################################
+# Operating system files
+########################################
+
+# macOS system files
+.DS_Store

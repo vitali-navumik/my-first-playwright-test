@@ -1,0 +1,71 @@
+package com.serenitydojo.playwright.toolsshop.catalog;
+
+import com.serenitydojo.playwright.toolsshop.fixtures.PlaywrightTestCase;
+import com.serenitydojo.playwright.toolsshop.catalog.pageobjects.ProductList;
+import com.serenitydojo.playwright.toolsshop.catalog.pageobjects.SearchComponent;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
+import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+
+@DisplayName("Searching for products")
+@Feature("Product Catalog")
+public class SearchForProductsTest extends PlaywrightTestCase {
+
+    @BeforeEach
+    void openHomePage() {
+        page.navigate("https://practicesoftwaretesting.com");
+    }
+
+    @Nested
+    @DisplayName("Searching by keyword")
+    @Story("Searching for products")
+    class SearchingByKeyword {
+
+        @DisplayName("When there are matching results")
+        @Test
+        void whenSearchingByKeyword() {
+            SearchComponent searchComponent = new SearchComponent(page);
+            ProductList productList = new ProductList(page);
+
+            searchComponent.searchBy("tape");
+            var matchingProducts = productList.getProductNames();
+
+            Assertions.assertThat(matchingProducts)
+                    .contains("Tape Measure 7.5m", "Measuring Tape", "Tape Measure 5m");
+        }
+
+        @DisplayName("When there are no matching results")
+        @Test
+        void whenThereIsNoMatchingProduct() {
+            SearchComponent searchComponent = new SearchComponent(page);
+            ProductList productList = new ProductList(page);
+
+            searchComponent.searchBy("unknown");
+            var matchingProducts = productList.getProductNames();
+
+            Assertions.assertThat(matchingProducts).isEmpty();
+            Assertions.assertThat(productList.getSearchCompletedMessage()).isEqualTo("There are no products found.");
+        }
+
+        @DisplayName("When the user clears a previous search results")
+        @Test
+        void clearingTheSearchResults() {
+            SearchComponent searchComponent = new SearchComponent(page);
+            ProductList productList = new ProductList(page);
+
+            searchComponent.searchBy("saw");
+            var matchingFilteredProducts = productList.getProductNames();
+
+            Assertions.assertThat(matchingFilteredProducts).hasSize(2);
+
+            searchComponent.clearSearch();
+            var matchingProducts = productList.getProductNames();
+
+            Assertions.assertThat(matchingProducts).hasSize(9);
+        }
+    }
+}
