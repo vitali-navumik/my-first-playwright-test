@@ -45,20 +45,6 @@ public class ProductCatalogStepDefinitions {
         Assertions.assertThat(matchingProducts).contains(productName);
     }
 
-    //    @Then("the following products should be displayed:")
-//    public void theFollowingProductsShouldBeDisplayed(DataTable expectedProducts) {
-//        var matchingProducts = productList.getProductSummaries();
-//        List<Map<String, String>> expectedProductData = expectedProducts.asMaps();
-//
-//        List<ProductSummary> expectedProductSummaries =
-//                expectedProductData.stream()
-//                        .map(productData -> new ProductSummary(
-//                                productData.get("Product"),
-//                                productData.get("Price")))
-//                        .toList();
-//
-//        Assertions.assertThat(matchingProducts).containsExactlyInAnyOrderElementsOf(expectedProductSummaries);
-//    }
     @DataTableType
     public ProductSummary productSummaryRow(Map<String, String> productData) {
         return new ProductSummary(productData.get("Product"), productData.get("Price"));

@@ -2,6 +2,7 @@ package com.serenitydojo.playwright.toolsshop.login;
 
 import com.serenitydojo.playwright.toolsshop.domain.User;
 import com.serenitydojo.playwright.toolsshop.fixtures.PlaywrightTestCase;
+import com.serenitydojo.playwright.toolsshop.login.pageobjects.LoginPage;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

@@ -20,12 +20,14 @@ public class NavBar {
     @Step("Open home page")
     public void openHomePage() {
         page.navigate("https://practicesoftwaretesting.com");
+        page.getByTestId("product-name").first().waitFor();
         ScreenshotManager.takeScreenshot(page, "Home page");
     }
 
     @Step("Open contact page")
     public void openContactPage() {
         page.navigate("https://practicesoftwaretesting.com/contact");
+        page.getByTestId("first-name").waitFor();
         ScreenshotManager.takeScreenshot(page, "Contact page");
     }
 }
