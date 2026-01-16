@@ -1,6 +1,8 @@
 package com.serenitydojo.playwright.toolsshop.catalog;
 
-import com.microsoft.playwright.assertions.PlaywrightAssertions;
+import com.serenitydojo.playwright.toolsshop.catalog.pageobjects.CheckoutCart;
+import com.serenitydojo.playwright.toolsshop.catalog.pageobjects.NavBar;
+import com.serenitydojo.playwright.toolsshop.catalog.pageobjects.ProductDetails;
 import com.serenitydojo.playwright.toolsshop.fixtures.PlaywrightTestCase;
 import com.serenitydojo.playwright.toolsshop.catalog.pageobjects.ProductList;
 import com.serenitydojo.playwright.toolsshop.catalog.pageobjects.SearchComponent;
@@ -15,10 +17,18 @@ import org.junit.jupiter.api.Test;
 @DisplayName("Searching for products")
 @Feature("Product Catalog")
 public class SearchForProductsTest extends PlaywrightTestCase {
+    SearchComponent searchComponent;
+    ProductList productList;
+    ProductDetails productDetails;
+    NavBar navBar;
+    CheckoutCart checkoutCart;
 
     @BeforeEach
     void openHomePage() {
-        page.navigate("https://practicesoftwaretesting.com");
+        navBar = new NavBar(page);
+        navBar.openHomePage();
+        searchComponent = new SearchComponent(page);
+        productList = new ProductList(page);
     }
 
     @Nested
@@ -29,9 +39,6 @@ public class SearchForProductsTest extends PlaywrightTestCase {
         @DisplayName("When there are matching results")
         @Test
         void whenSearchingByKeyword() {
-            SearchComponent searchComponent = new SearchComponent(page);
-            ProductList productList = new ProductList(page);
-
             searchComponent.searchBy("tape");
             var matchingProducts = productList.getProductNames();
 
@@ -42,9 +49,6 @@ public class SearchForProductsTest extends PlaywrightTestCase {
         @DisplayName("When there are no matching results")
         @Test
         void whenThereIsNoMatchingProduct() {
-            SearchComponent searchComponent = new SearchComponent(page);
-            ProductList productList = new ProductList(page);
-
             searchComponent.searchBy("unknown");
             var matchingProducts = productList.getProductNames();
 
@@ -55,9 +59,6 @@ public class SearchForProductsTest extends PlaywrightTestCase {
         @DisplayName("When the user clears a previous search results")
         @Test
         void clearingTheSearchResults() {
-            SearchComponent searchComponent = new SearchComponent(page);
-            ProductList productList = new ProductList(page);
-
             searchComponent.searchBy("saw");
             var matchingFilteredProducts = productList.getProductNames();
 

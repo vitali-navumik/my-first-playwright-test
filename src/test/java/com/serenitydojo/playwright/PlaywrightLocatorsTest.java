@@ -198,6 +198,7 @@ public class PlaywrightLocatorsTest {
         @BeforeEach
         void openContactPage() {
             page.navigate("https://practicesoftwaretesting.com/contact");
+            page.locator("#first_name").waitFor();
         }
 
         @DisplayName("By id")
@@ -237,6 +238,8 @@ public class PlaywrightLocatorsTest {
         void openContactPage() {
             page.navigate("https://practicesoftwaretesting.com/contact");
             playwright.selectors().setTestIdAttribute("data-test");
+            page.locator(".navbar").waitFor();
+            page.locator("#first_name").waitFor();
         }
 
         // :has-text matches any element containing specified text somewhere inside.
