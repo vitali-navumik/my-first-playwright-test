@@ -1,8 +1,6 @@
 package com.serenitydojo.playwright.toolsshop.catalog;
 
-import com.serenitydojo.playwright.toolsshop.catalog.pageobjects.CheckoutCart;
 import com.serenitydojo.playwright.toolsshop.catalog.pageobjects.NavBar;
-import com.serenitydojo.playwright.toolsshop.catalog.pageobjects.ProductDetails;
 import com.serenitydojo.playwright.toolsshop.fixtures.PlaywrightTestCase;
 import com.serenitydojo.playwright.toolsshop.catalog.pageobjects.ProductList;
 import com.serenitydojo.playwright.toolsshop.catalog.pageobjects.SearchComponent;
